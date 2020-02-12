@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            // 改造，使之打印出0~9
+            for (var i = 0; i< 10; i++){
+                setTimeout(() => {
+                    console.log(i);
+                }, 1000)
+            }
+         */
+        // 1.使用块及作用域，利用暂存死区，将每次循环的值保存起来
+        for (let i = 0; i < 10; i++) {
+            setTimeout(() => {
+                console.log('方法1: '+i);
+            }, 1000)
+        }
+        /* 2.利用setTimeout的附加参数，一旦定时器到期，它们会作为参数传递给function的特性,
+            这样也等同于块及作用域
+        */
+        for (var i = 0; i < 10; i++) {
+            setTimeout((i) => {
+                console.log('方法2: '+i);
+            }, 1000,i)
+        }
+        /* 3. IIFE立即自执行，构建块及作用域
+         */
+        for (var i = 0 ; i < 10 ; i++){
+            ( i => {
+                setTimeout(console.log('方法3: '+i),1000)
+            })(i)
+        }
+        for (var i = 0 ; i < 10 ; i++){
+            setTimeout(( i => {
+                console.log('方法4: '+i)
+            })(i),1000)
+        }
+
+        for (var i = 0; i < 10; i++) {
+            setTimeout((i => {
+                console.log('方法5: ' +i);
+            }).apply(Object.create(null), [i]), 1000)
+        }
+        for (var i = 0; i < 10; i++) {
+            setTimeout((i => {
+                console.log('方法6: ' +i);
+            }).call(Object.create(null), i), 1000)
+        }
+        // 综上就是创建块及作用域
+    </script>
+</body>
+</html>

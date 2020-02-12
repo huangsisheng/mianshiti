@@ -1,0 +1,23 @@
+企业开发常用立方体
+条件：
+1.先把参照物转为3d。transform-style: preserve-3d;
+2.给参照物相对定位，给子元素绝对定位。
+3.旋转平移条件：
+  第一个面给transform: rotateX(90deg) translateZ(100px)（元素总宽是200px）;
+  第二个面设置transform: rotateX(180deg) translateZ(100px);
+  第三个面设置transform: rotateX(270deg) translateZ(100px);
+  第四个面设置transform: rotateX(360deg) translateZ(100px);
+  第五个面设置transform: translateX(-100px) rotateY(90deg);
+  第六个面设置transform: translateX(100px) rotateY(90deg) ;
+4.给参照物父元素设置transform: rotateY(0deg) rotateX(0deg);旋转调试看效果。
+ 
+把正方体怎么变成长方体？
+ 第一个面给transform: rotateX(90deg) translateZ(100px) scale（2,1）；（元素总宽是200px）;
+  第二个面设置transform: rotateX(180deg) translateZ(100px) scale（2,1）;
+  第三个面设置transform: rotateX(270deg) translateZ(100px) scale（2,1）;
+  第四个面设置transform: rotateX(360deg) translateZ(100px) scale（2,1）;
+  第五个面设置transform: translateX(-200px) rotateY(90deg);
+  第六个面设置transform: translateX(200px) rotateY(90deg) ;
+
+4.给参照物父元素设置transform: rotateY(0deg) rotateX(0deg);
+旋转调试看效果。

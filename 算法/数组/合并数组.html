@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            1.请把两个数组 ['A1', 'A2', 'B1', 'B2', 'C1', 'C2', 'D1', 'D2'] 
+            和 ['A', 'B', 'C', 'D']，合并为
+            ['A1', 'A2', 'A', 'B1', 'B2', 'B', 'C1', 'C2', 'C', 'D1', 'D2', 'D']。
+            链接：https://juejin.im/post/5d23e750f265da1b855c7bbe
+         */
+         function concatArr(arr1,arr2) {
+            // 浅拷贝数组 
+            let arr = [...arr1]
+            let currIndex = 0
+            for(let i = 0;i < arr2.length;i++){
+                let RE = new RegExp(arr2[i])
+                while (currIndex < arr.length) {
+                    ++currIndex
+                    if (!RE.test(arr[currIndex])) { 
+                        arr.splice(currIndex,0, arr2[i])
+                        // 跳出当前while循环，否则造成死循环
+                        break;
+                    }
+                }
+            }
+            return arr
+         }
+        let arr1 = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2', 'D1', 'D2']
+        let arr2 = ['A', 'B', 'C', 'D']
+        console.log(concatArr(arr1,arr2))
+        //得出结论：
+        /* 
+         1.使用for、 for in 、for of、while、do while循环时注意是否要退出循环
+         2.判断两个值时，活用正则表达式 new RegExp()、/212/
+         */
+
+
+    </script>
+</body>
+</html>

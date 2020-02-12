@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title> CSS文档统筹</title>
+<style>
+body{ padding:20px;}
+*{ font-size:18px; line-height:30px; font-weight:normal;}
+</style>
+</head>
+
+<body>
+<h1> CSS文档统筹	</h1>
+<h2>1）整站里相同的CSS样式提取到一个样式表里，各个页面调用相同的样式文件即可。</h2>
+<h2>2）网站较大的情况下一般会把网站的头部，尾部单独分离出来，包括样式文件。</h2>
+<h1>15.1.1 根据页面类型分离文件	</h1>
+<h1>15.1.2 根据功能模块分离文件</h1>
+<h1>15.1.3 根据设备类型分离文件</h1>	
+<h1>15.1.4 根据代码规模综合分离文件</h1>
+<h1> 网页自身优化（如何让网站被搜索引擎搜索到）：</h1>
+<H1>★页面主题优化 </H1>
+<H1>实事求是的写下自己网站的名字，网站的名字要合理，最好包含网站的主要内容。</H1>
+<H1>★页面头部优化 </H1>
+<H1>页面头部指的是代码中部分，具体一点就是中的&ldquo;Description（描述）&rdquo;和&ldquo;Keywords（关键字）&rdquo;两部分：</H1>
+<H2>1、&ldquo;描述&rdquo;部分应该用近乎描述的语言写下一段介绍你网站的文字，在这其中，你应该适当的对你网站的特色内容加以重复以求突出；</H2>
+<H2>2、&ldquo;关键字&rdquo;部分应该列出你认为合适的，能突出网站内容的关键字就可以了，关键字不要设置太多，可设置10---8个，搜索引擎只会浏览靠前的几个关键字。</H2>
+<H2>&lt;meta name="keywords"   content="" /&gt;向搜索引擎说明你的网页的关键词；<BR>
+  &lt;meta   name="description"    content=""/&gt;告诉搜索引擎你的站点的主要内容；</H2>
+<H2>&lt;meta name="generator" content=""&gt;用以说明生成工具（如Microsoft FrontPage   4.0）等；<BR>
+  &lt;meta name="author"content="你的姓名"&gt;告诉搜索引擎你的站点的制作的作者；</H2>
+<H1>★超链接优化 </H1>
+<h2>搜索引擎为何可以能够索引全世界的网站，是因为各个搜索引擎程序中都有一个会自动&ldquo;爬行&rdquo;于互联网上的智能机器人程序，这个机器人就是顺着网站之间的链接游览世界的，那么我们就应该为它创造一个良好的爬行通道——合理的设置链接。   怎样的链接才是合理的呢？</h2>
+<h2>1、采用纯文本链接，少用，最好是别用Flash动画设置链接，因为搜索引擎无法识别Flash上的文字.</h2>
+<h2>许多公司、个人都喜欢酷酷的Flash动画，网站的入口也做成Flash片断，，搜索引擎很难光顾这样的网站。而且个别设计者非常马虎，把网站的入口链接放在了Flash上，有时因为网络繁忙、缺少Flash插件而导致用户根本就看不到网站的内容，</h2>
+<h2>2、按规范书写超链接，这个title属性，它既可以起到提示访客的作用，也可以让搜索引擎知道它要去哪里.</h2>
+<h2>3、最好别使用图片热点链接，理由和第一点差不多。</h2>
+<H1>★图片优化(alt属性，title属性)</H1>
+<h2>图片优化并不是修改图片的大小、颜色，而是你应该为每个标签加上alt属性，alt属性的作用是当图片无法显示时以文字作为替代显示出来，而对于SEO来说，它可以令搜索引擎有机会索引你网站上的图片，对于一些确实没什么意义的图片，最好也不要省略alt，而应该留空，即   alt=""。 </h2>
+<H1>★为网站制作一个&ldquo;网站地图&rdquo;</H1>
+<h2>什么是网站地图？说白了就是一个页面，在这个页面上呢，列出了你网站中各个栏目的入口地址，例如：http://sitemap.163.com，站点地图的作用很大，首先，对于一个栏目众多的网站，它可以帮助访客最快速度找到所需的内容；二则，可以给搜索引擎提供一份自己网站的&ldquo;鸟瞰图&rdquo;，方便搜索机器人依次索引整个网站。 </h2>
+<H1>★PageRank（pr值,友情链接）  </H1>
+<h2>PR值是Google提出的一个重要参数，它标明了某个网站的重要程度，那么pr值是如何确定的呢？目前普通的解释为：假如有ABC三个网站，彼此互作友情链接，那么当一个访客通过A上的友情链接来到B时，Google就认为A为B投了&ldquo;一票&rdquo;，同理，如果有人从C访问B，那么B又得一票，如果全世界的网站上都有B的友情链接，B就是世界上最重要的网站了！</h2>
+<h2>那么如何提供我们自己的pr值，方法为交换链接！应该找一些和自己网站内容相近，且较为优秀的网站，但不要疯狂的交换链接，如果你的首页上一下子多了几百个友情链接，Google不但不会提升你的pr，有可能认为你作弊，从而把该网站从自己的数据库中删除.</h2>
+<H1> ★静态页面与动态页面</H1>
+<h2>目前所有的SEO都认为，Google一类的搜索引擎会尽量避免索引带有参数动态页面，而喜欢索引普通的静态页面，这一点并未得到Google等搜索引擎的明确回答，但从效果来看是这样。</h2>
+<h2>毕竟动态页面的变数太大，举个例子，你发了一个帖子，可能在论坛某板块的第1页上，可随着跟贴的增加你的发言可能就被挤到第10页上了，   因此，制作网站的时候，最好避免使用动态页面，或者改良技术，让动态页面自动生成对应的静态页面，既能便于搜索引擎收录，也可以降低网站服务器、数据库负担，一举两得，不过这也不是绝对的，网站流量决定一切，即便是一个全部采用动态页面的网站，但因为很受欢迎访客不断，那么它还是会被搜索引擎青睐，还是会出现在搜索结果的前列。而且，随着技术的进步，搜索引擎也会改进，搜索动态页面将来必定会更加容易。 </h2>
+<H1>★避免大&ldquo;体积&rdquo;的页面 </H1>
+<h2>有经验标明，搜索引擎不喜欢索引大体积的页面，即一个页面代码部分的体积不要太大，控制在100kb内为佳.</h2>
+<H1>★最重要的一点！合理的代码结构</H1>
+<h2>搜索引擎喜欢格式清晰，结构分明的页面，理论上XML是最合乎搜索引擎，当然，这太极端了，不过如果采用XHTML+CSS技术将页面数据同表现分离，即避免大量嵌套表格和其它冗余的代码还是能够完美实现这一要求的。</h2>
+<h1>原则：简化代码，易修改</h1>
+<h1>二、CSS规范</h1><blockquote>
+  <h2>1、命名方法（语义化命名，结构化命名）</h2>
+  <h1>ID:结构化&nbsp;&nbsp;&nbsp;&nbsp;header footer&nbsp;&nbsp;&nbsp;</h1>
+  <h1>class: .border0 &nbsp;&nbsp;&nbsp;.&nbsp;red:&nbsp;&nbsp;&nbsp;&nbsp;.font12&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.clear</h1>
+</blockquote>
+<h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2、CSS命名规则</h2>
+<blockquote>
+  <h2>1）建议使用小写字母</h2>
+  <h2>2）以英文字母开头，后面可以连接数字、字母、下划线、连字符，建议尽量使用英文字母，适当使用下划线和连接线；</h2>
+  <h2>3）词必达意，名称要反映用途和相关信息，同时也要简短。</h2>
+</blockquote>
+<h1>三、样式重置</h1>
+<h1>1、规则设置</h1>
+<h2>以新浪为例：</h2>
+<h2>html, body, ul, li, ol, dl, dd, dt, p, h1, h2, h3, h4, h5, h6, form, fieldset, legend, img ,div{ margin:0; padding:0; } </h2>
+<h2>fieldset, img { border:none; } </h2>
+<h2>img{display: block;} </h2>
+<h2>address, caption, cite, code, dfn, th, var { font-style:normal; font-weight:normal; } </h2>
+<h2>ul, ol { list-style:none; } <br>
+</h2>
+<h2>body { color:#333; font:12px/20px &quot;SimSun&quot;,&quot;宋体&quot;,&quot;Arial Narrow&quot;,HELVETICA; background:#fff;/* overflow-y:scroll;*/ overflow-x:hidden;}</h2>
+<h2>a { color:#666; text-decoration:none; } </h2>
+<h2>a:visited { color:#666; } </h2>
+<h2>a:hover, a:active, a:focus { color:#ff8400; text-decoration:underline; } </h2>
+<h1>2、腾讯</h1>
+<h1 id="line1">body,ol,ul,h1,h2,h3,h4,h5,h6,p,th,td,dl,dd,form,fieldset,legend,input,textarea,select{margin:0;padding:0}  <span id="line33"> <br>
+  </span>body{font:12px "宋体","Arial Narrow",HELVETICA;background:#fff;}<br>
+  <span id="line34"> </span>a{color:#172c45;text-decoration:none} <br>
+  a:hover{color:#cd0200;text-decoration:underline} <br>
+  <span id="line36"> </span>em{font-style:normal}<br>
+  <span id="line37"> </span>li{list-style:none}<br>
+  img{border:0;vertical-align:middle} <br>
+  table{border-collapse:collapse;border-spacing:0}<br>
+  <span id="line40"> </span>p{word-wrap:break-word}<br>
+  .ind{text-indent:2em} <br>
+  .ind10{text-indent:10px;}<br>
+  <span id="line43"> </span>.noborder{border:0;}</h1>
+<h1>3、搜狐</h1>
+<h1>body{font-family:"\5B8B\4F53","Arial Narrow",HELVETICA;text-align:center;margin:0 auto;padding:0;background:#FFF;font-size:12px;color:#333;} <br>
+  body &gt; div{text-align:center;margin-right:auto;margin-left:auto;} <br>
+  div,form,ul,ol,li,span,p{margin:0;padding:0;border:0;}<br>
+  img,a img{border:0;margin:0;padding:0;}<br>
+  h1,h2,h3,h4,h5,h6{margin:0;padding:0;font-size:12px;font-weight:normal;}<br>
+  ul,ol,li{list-style:none}<br>
+  table,td,input{font-size:12px;padding:0}  /* 默认链接颜色 */ <br>
+  a{outline-style:none;color:#333;text-decoration:none}<br>
+  a:hover{color:#c00;text-decoration:underline;}</h1>
+<p>&nbsp;</p>
+<h1>&nbsp;</h1>
+<p>&nbsp;</p>
+</body>
+</html>
