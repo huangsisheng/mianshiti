@@ -9,30 +9,33 @@
 </head>
 <img src="./prototype5.png" alt="">
 <!-- 蓝色的线就是原型链 -->
-<!-- null 表示“没有对象”，即该处不应该有值。 -->
 <body>
+    <!-- https://github.com/mqyqingfeng/Blog/issues/2 -->
     <script>
         //什么是原型？
         function Person(){}
         Person.prototype.name = 'Kevin'
-        var person1 = new Person()
-        var person2 = new Person()
-        console.log(person1)
-        console.log(person2)
+        var person = new Person()
+        console.log(person)
 
         // __proto__是每一个JavaScript对象(除了 null )都具有的一个属性，这个属性会指向该对象的原型
-        // 1
+        // 1.
         console.log(Person.prototype.constructor === Person)
         // 2.
-        console.log(person1.__proto__.constructor === Person)
+        console.log(person.__proto__.constructor === Person)
         // 3.
-        console.log(person1.__proto__ === Person.prototype)
-        // console.log(person1.__proto__.constructor.prototype === Person.prototype)
+        console.log(person.__proto__ === Person.prototype)
+        // console.log(person.__proto__.constructor.prototype === Person.prototype)
         /* 
             (Person)构造函数.prototype 指向一个对象，这个对象就是new出来的实例对象的原型,所以也叫原型对象
          */
         //  原型链?
-        // 所以原型链就是查找实例的某个属性，查找它的原型，原型的原型直到查找到Object
+        // 所以原型链就是查找实例的某个属性，查找它的原型，原型的原型直到查找到Object.prototype === null
+        // null 表示“没有对象”，即该处不应该有值。
+        // a.实例本身没有构造函数，但是实例会到它的原型上去查找
+        console.log(person.constructor === Person.prototype.constructor)
+        // b.因此
+        console.log(person.constructor === Person)
     </script>
 </body>
 </html>

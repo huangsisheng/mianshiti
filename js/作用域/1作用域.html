@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>作用域</title>
+</head>
+<body>
+    <!-- https://github.com/mqyqingfeng/Blog/issues/3 -->
+    <script>
+        // javascript采用的是词法作用域（lexcial scope）也就是静态作用域
+        // 因为javascript采用的是词法作用域，所以函数的作用域在函数定义的时候就决定了。
+        // 例1
+        var value = 1
+        function foo(params) {
+            console.log(value)
+        }
+        function bar(params) {
+            var value = 2
+            foo()
+        }
+        bar()
+        // 最终打印结果为1，也就印证javascript采用词法作用域。
+        
+    </script>
+    
+</body>
+</html>

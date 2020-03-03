@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>grid布局</title>
+    <style>
+        .container{
+            display: grid;
+            /* grid-template-columns: 300px 300px 300px;
+            grid-template-rows:300px 300px 300px; */
+
+            /* repeat函数接受两个参数，第一个接受需要重复的次数，第二个是需要重复的值 */
+            /* grid-template-columns: repeat(3,300px);
+            grid-template-rows:repeat(3,300px); */
+
+            /* auto-fill关键字表示自动填充，有时候容器大小未知但需要容纳尽可能多的单元格 */
+            /* grid-template-columns: repeat(auto-fill,33%);
+            grid-template-rows: repeat(auto-fill,33%); */
+
+            /* fr片段(fraction) 分为多少份*/
+            grid-template-columns: 1fr 2fr;
+
+        }
+        .item{
+            margin-right: 10px;
+            margin-bottom: 10px;
+            background-color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <!-- http://www.ruanyifeng.com/blog/2019/03/grid-layout-tutorial.html -->
+    <!-- .container代表grid布局中的容器 -->
+    <div class="container">
+        <!-- .item代表grid布局中的项目 -->
+        <!-- 容器只对项目有效 -->
+        <section class="item"><p>1</p></section>
+        <section class="item"><p>2</p></section>
+        <section class="item"><p>3</p></section>
+        <section class="item"><p>1</p></section>
+        <section class="item"><p>2</p></section>
+        <section class="item"><p>3</p></section>
+        <section class="item"><p>1</p></section>
+        <section class="item"><p>2</p></section>
+        <section class="item"><p>3</p></section>
+    </div>
+</body>
+</html>
