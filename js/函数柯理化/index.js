@@ -5,7 +5,7 @@
 // 第一版
 /* var curry = function (fn) {
     // [].slice.call(arguments, 1);   arguments作为被处理的参数，从索引1开始截取
-    var args = [].slice.call(arguments, 1); // [1,2]
+    var args =  [].slice.call(arguments, 1); // [1,2]
     console.log(args)
     return function () {
         // 将args转换为数组

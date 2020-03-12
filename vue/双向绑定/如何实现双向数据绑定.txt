@@ -1,0 +1,4 @@
+首先
+1.通过observer观察者去递归遍历data中的数据，通过Object.defineProperty 劫持数据，当给属性赋值的时候就会触发setter，同时在getter的时候会给dep订阅器添加watcher订阅者。
+2.那么dep订阅器就会去遍历执行订阅者watcher中的更新函数
+3.当触发订阅者watcher中的更新函数后就会来到compile解析器，它的主要作用就是对vue模板指令、方法以及其他属性进行解析，将他们替换成真实的数据然后去渲染视图
