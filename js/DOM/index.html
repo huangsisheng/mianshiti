@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dom相关操作</title>
+    <!-- https://microzz.com/2017/04/06/jsdom/ -->
+    <style>
+        .app{
+            width: 500px;
+            height: 500px;
+            position: relative;
+            background-color: aliceblue;
+        }
+        .c2{
+            width: 100px;
+            height: 100px;
+            background-color: #ccc;
+            position: absolute;
+            top: 100px;
+            left: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="app">
+        <div class="c1">1</div>
+        <div class="c2">
+            <span>2</span>
+        </div>
+        <div class="c3">3</div>
+    </div>
+    <script>
+        let c2 = document.querySelector('.c2')
+        let obj = c2.getBoundingClientRect()
+        console.log(obj)
+        const offsetLet = obj.left + document.body.scrollLeft //元素在页面中的左偏移量
+
+        const c2_c = c2.firstElementChild
+        // 事件代理
+        c2.addEventListener('click',(event) => {
+            let e = event || window.event
+            let target = e.target || e.srcElement
+
+            if(target.tagName.toLowerCase() === 'span'){
+                alert('我是事件代理！！！')
+            }    
+        })
+
+    </script>
+    
+</body>
+</html>
