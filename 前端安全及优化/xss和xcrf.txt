@@ -1,1 +1,20 @@
 https://juejin.im/post/59dc2b7a6fb9a0451869ae3a
+
+1.xss跨站脚本攻击
+
+	概念：xss: 跨站脚本攻击（Cross Site Scripting）是最常见和基本的攻击 WEB 网站方法，攻击者通过注入非法的 html 标签或		者 javascript 代码，从而当用户浏览该网页时，控制用户浏览器。
+
+	防御：
+	a.设置cookie时添加hotonly为true
+	b.htmlencode元素进行转义
+	c.输入格式的检查过滤，要求必须是规定格式
+
+2.csrf：跨站点请求伪造（Cross-Site Request Forgeries）
+	
+	概念：冒充用户发起请求（在用户不知情的情况下）， 完成一些违背用户意愿的事情（如修改用户信息，删初评论等）
+	
+	防御：
+	a.验证码
+	b.token验证
+	c.尽量使用post请求
+	d.来源限制
