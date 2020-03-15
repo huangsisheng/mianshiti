@@ -29,13 +29,14 @@ const arr = [
     { age: 55 }
 ]
 console.log(selectSort(arr))
+
 function selectSort(arr) {
-    let [len,minIndex] = [arr.length,null]
-    for(let i = 0; i < len - 1; i++){
+    let [len, minIndex] = [arr.length, null]
+    for (let i = 0; i < len - 1; i++) {
         minIndex = i //假设，标记当前的数为最小
-        for(let j = i + 1; j < len; j++){ 
+        for (let j = i + 1; j < len; j++) { // i+1 ：前面的已经排好序
             //找出真正最小的数
-            if (arr[minIndex].age > arr[j].age){
+            if (arr[minIndex].age > arr[j].age) {
                 minIndex = j
             }
         }
