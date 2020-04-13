@@ -11,3 +11,7 @@ let c = String(a) // '42'显式强制类型转换
 支持JSON的语言无法处理它们。JSON.stringify(..)在对象中遇到undefined、function
 和symbol时会自动将其忽略，在数组中则会返回null（以保证单元位置不变）
 */
+
+/**
+/* @param
+**/
