@@ -13,5 +13,5 @@ function fn(x) {
     x.push(4,5,6)
     console.log(x)
 }
-console.log(arr)
+console.log(arr,'arr')
 fn(arr)
