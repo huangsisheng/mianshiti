@@ -1,5 +1,5 @@
 // 不能拷贝对象
-// 1.slice()、concat()、展开运算符
+// 1.slice()、concat()
 /* let array = [1,null,3,'5',{o:'OO'},['arr']]
 let newArray = array.slice()
 let newArray = array.concat()

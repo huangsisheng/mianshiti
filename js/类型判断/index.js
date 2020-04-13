@@ -3,7 +3,7 @@ class Type{
     constructor(option){
         this.typeObj = {}
     }
-    
+
 
 }
 let typeObj = {}
