@@ -20,6 +20,7 @@
             let currIndex = 0
             for(let i = 0;i < arr2.length;i++){
                 let RE = new RegExp(arr2[i])
+                console.log(RE)
                 while (currIndex < arr.length) {
                     ++currIndex
                     if (!RE.test(arr[currIndex])) { 
@@ -39,8 +40,21 @@
          1.使用for、 for in 、for of、while、do while循环时注意是否要退出循环
          2.判断两个值时，活用正则表达式 new RegExp()、/212/
          */
+        
+        let filterArr = (function (arr1,arr2) {
+            let _array = []
+            for(var i = 0; i < arr1.length; i++){
+                for(var j = 0; j < arr2.length; j++){
+                    if(arr1[i] === arr2[j]){
+                        _array.push(arr2[j])
+                    }
+                }
+            }
+            console.log(_array)
+            return _array
+        })(['A', 'B', 'C', 'D'],['A1', 'B', 'C1', 'D','E','F'])
 
-
+        filterArr
     </script>
 </body>
 </html>

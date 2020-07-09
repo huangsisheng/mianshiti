@@ -1,1 +1,16 @@
 // https://blog.csdn.net/qq_38111015/article/details/84885809
+
+标签(最近一次commit)
+git tag tagName
+git tag :列出所有tag
+
+回退
+git reset --hard HEAD/commitId 
+git push -f 提交更改
+
+撤销/修改 
+git checkout -- readme.txt 或者 
+git reset HEAD  readme.txt 
+
+回滚
+git revert -n commitId （需要重新commit）可以丢弃不需要的commit
