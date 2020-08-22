@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大文件上传</title>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+    <style>
+        .input-file {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <input class="input-file" type="file" name="" id="upfile" @change="handleFileChange">
+        <el-button @click="handleUpload">
+            <label for="upfile">上传文件</label>
+        </el-button>
+        <iframe
+            src="https://view.officeapps.live.com/op/view.aspx?src=https://dggtechtest.oss-cn-beijing.aliyuncs.com/4d0ebb4b42204c10b10998b7ec328bc8_480720215190286336.docx"
+            frameborder="0" width="500" height="800"></iframe>
+        <a href="http://v.xinba.com/doc/preview?i=1&furl=https://dggtechtest.oss-cn-beijing.aliyuncs.com/4d0ebb4b42204c10b10998b7ec328bc8_480720215190286336.docx"
+            target="_blank">点击预览</a>
+    </div>
+    <script>
+        const SIZE = 0.1 * 1024 * 1024 // 切片限制大小 0.1M
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                container: {
+                    file: null
+                },
+                data: []
+            },
+            
+            mounted() {
+                console.log(this.isIsoVal('aadds', 'bbrrq'))
+
+                let o = [{ name: 11 }, { name: 22 }, { name: 11 }, { name: 33 }]
+                let map = new Map()
+                o.filter((item) => {
+                    return !map.has(item.name) && map.set(item,1)
+                })
+                console.log(o)
+            },
+            // typeof null == 'object': javascript中判断类型的二进制前三位为0则为 对象,而null的二进制全部是0
+            methods: {
+                // 判断两个字符是不是同构, aaab/ccct,长度格式一一对应
+                isIsoVal(fv1, fv2) {
+                    // 长度不等绝对不是同构
+                    if (fv1.length !== fv2.length) return false
+
+                    let objMap = {}
+
+                    for (let i = 0; i < fv1.length; i++) {
+                        let letterA = fv1[i],
+                            letterB = fv2[i];
+                        // letterA 没有就把letterB复制给它
+                        if (objMap[letterA] == undefined) {
+                            objMap[letterA] = letterB
+                        } else if (objMap[letterA] !== letterB) {
+                            // 若letterA在objMap已存在但不与letterB对应,说明letterA与多个字符相应
+                            // 不同构
+                            return false
+                        }
+                    }
+                    // 迭代完毕,同构
+                    return true
+                },
+                // 触发file上传控件
+                handleFileChange(e) {
+                    const [file] = e.target.files
+                    if (!file)
+                        return
+                    Object.assign(this.$data, this.$options.data())
+                    this.container.file = file
+                    setTimeout(() => {
+                        this.handleUpload()
+                    }, 0);
+                },
+                // 点击上传切片
+                async handleUpload() {
+                    const _file = this.container.file
+                    if (!_file) return
+                    // 生成的切片
+                    const fileChunkList = this.createFileChunk(_file)
+
+                    this.data = fileChunkList.map(({ file }, index) => {
+                        return {
+                            chunk: file,
+                            hash: _file.name + '-' + index
+                        }
+                    })
+                    console.log(this.data)
+                    await this.uploadChunks()
+                },
+                // 生成切片
+                createFileChunk(file, size = SIZE) {
+                    let fileChunkList = [],
+                        cur = 0;
+                    // 分割文件未若干切片
+                    while (cur < file.size) {
+                        fileChunkList.push({ file: file.slice(cur, cur + size) })
+                        cur += size
+                    }
+                    return fileChunkList
+                },
+                // 上传切片的方法
+                async uploadChunks() {
+                    const requestList = this.data.map(({ chunk, hash }) => {
+                        let formData = new FormData()
+                        formData.append('chunk', chunk)
+                        formData.append('hash', hash)
+                        formData.append('filename', this.container.file.name)
+                        return { formData }
+                    }).map(async ({ formData }) => {
+                        this.request({
+                            url: 'http://locahost:3000',
+                            data: formData
+                        })
+                    })
+                    // 并发切片
+                    await Promise.all(requestList)
+                    await this.mergeChunks()
+                },
+                // 请求逻辑
+                request({
+                    url,
+                    method = 'post',
+                    data,
+                    headers = {},
+                    requestList
+                }) {
+                    return new Promise((resolve) => {
+                        let xhr = new XMLHttpRequest()
+                        xhr.open(method, url, true)
+                        Object.keys(headers).forEach((key) => {
+                            xhr.setRequestHeader(key, headers[key])
+                        })
+                        xhr.send(data)
+                        // 请求发送成功
+                        xhr.onload = (e) => {
+                            resolve({
+                                data: e.target.response
+                            })
+                        }
+                    })
+                },
+
+
+                // 合并切片
+                async mergeChunks() {
+                    await this.request({
+                        url: 'http://localhost:3000/merge',
+                        header: {
+                            "content-type": "application/json"
+                        },
+                        data: JSON.stringify({
+                            filename: this.container.file.name
+                        })
+                    })
+                }
+
+            }
+        })
+    </script>
+</body>
+
+</html>
