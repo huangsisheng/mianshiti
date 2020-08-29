@@ -1,0 +1,101 @@
+// （1）首先创建了一个新的空对象
+// （2）设置原型，将对象的原型设置为函数的 prototype 对象。
+// （3）让函数的 this 指向这个对象，执行构造函数的代码（为这个新对象添加属性）
+// （4）判断函数的返回值类型，如果是值类型，返回创建的对象。如果是引用类型，就返回这个引用类型的对象。
+
+// 实现:
+
+function objectFactory() {
+  let newObject = null,
+    constructor = Array.prototype.shift.call(arguments),
+    result = null;
+
+  // 参数判断
+  if (typeof constructor !== "function") {
+    console.error("type error");
+    return;
+  }
+
+  // 新建一个空对象，对象的原型为构造函数的 prototype 对象
+  newObject = Object.create(constructor.prototype);
+
+  // 将 this 指向新建对象，并执行函数
+  result = constructor.apply(newObject, arguments);
+
+  // 判断返回对象
+  let flag =
+    result && (typeof result === "object" || typeof result === "function");
+
+  // 判断返回结果
+  return flag ? result : newObject;
+}
+
+// 使用方法
+// objectFactory(构造函数, 初始化参数);
+
+
+*********************************************************************
+/**
+ * 设置某个token
+ * @param {string} cname
+ */
+export function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires="+d.toUTCString();
+    document.cookie = cname + "=" + cvalue + "; " + expires;
+}
+
+/**
+ * 获得某个cname
+ * @param {string} cname
+ */
+export function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0; i<ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1);
+        if (c.indexOf(name) != -1) return c.substring(name.length, c.length);
+    }
+    return "";
+}
+
+/**
+ * 移除个name
+ * @param {string} name
+ */
+export function clearCookie(name) {  
+    // var keys = document.cookie.match(/[^ =;]+(?=\=)/g);
+    // if (keys) {
+    //     for (var i = keys.length; i--;) {
+    //         document.cookie = keys[i] + '=0;path=/;expires=' + new Date(0).toUTCString();//清除当前域名下的,例如：m.kevis.com
+    //         document.cookie = keys[i] + '=0;path=/;domain=' + document.domain + ';expires=' + new Date(0).toUTCString();//清除当前域名下的，例如 .m.kevis.com
+    //         document.cookie = keys[i] + '=0;path=/;domain=kevis.com;expires=' + new Date(0).toUTCString();//清除一级域名下的或指定的，例如 .kevis.com
+    //     }
+    // }
+    setCookie(name, "", -1);
+}
+
+***********************************************************
+// 考察：对象键名只能为字符串和symbol，以及键名会调用toString()方法
+// example 1
+var a={}, b='123', c=123;  
+a[b]='b';
+a[c]='c';  
+console.log(a[b]);
+
+---------------------
+// example 2
+var a={}, b=Symbol('123'), c=Symbol('123');  
+a[b]='b';
+a[c]='c';  
+console.log(a[b]);
+
+---------------------
+// example 3
+var a={}, b={key:'123'}, c={key:'456'};  
+a[b]='b';
+a[c]='c';  
+console.log(a[b]);
+
