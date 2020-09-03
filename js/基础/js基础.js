@@ -384,6 +384,18 @@ new new Foo().getName(); // new ((new Foo()).getName)()： 3
 
 /************** 易错题 End ****************/
 
+function test() {
+    console.debug(this)
+    console.log(this)
+}
+// https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/apply
+// this指向谁？
+test.call({ name: 'zs' }) // { name: 'zs' }
+test.call(Object) // function Object(){}
+test.call(null)   // window
+test.call(undefined) // window
+
+
 let person = {
     name:'张三'
 }
