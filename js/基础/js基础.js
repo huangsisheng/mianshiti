@@ -226,7 +226,7 @@ let list = [
     { id: 8, name: '部门H', parentId: 4 }
 ];
 
-const convert = list => {
+/* const convert = list => {
     let map = new Map();
     let result = []
 
@@ -258,7 +258,28 @@ const convert = list => {
     return result
 };
 
-convert(list)
+convert(list) */
+// 利用递归
+
+function array2Tree(data, parentId = '') {
+    let tree = [];
+    let temp;
+    data.forEach((item) => {
+        if (item.parentId == parentId) {
+            let obj = item;
+            temp = array2Tree(data, item.id);
+            if (temp.length > 0) {
+                obj.children = temp;
+            }
+            tree.push(obj);
+        }
+    })
+    return tree;
+}
+
+
+array2Tree(list)
+
 
 
 /* 查询字符串转对象 Start */
@@ -397,13 +418,13 @@ test.call(undefined) // window
 
 
 let person = {
-    name:'张三'
+    name: '张三'
 }
 let proxy = new Proxy(person, {
     get: function (target, proKey) {
-        if (proKey in target ){
+        if (proKey in target) {
             return target[proKey]
-        } else{
+        } else {
             throw new ReferenceError('not exist')
         }
     }

@@ -9,7 +9,7 @@ https://juejin.im/post/59dc2b7a6fb9a0451869ae3a
 	b.htmlencode元素进行转义
 	c.输入格式的检查过滤，要求必须是规定格式
 
-2.csrf：跨站点请求伪造（Cross-Site Request Forgeries）
+2.csrf：跨站点请求伪造（Cross-Site Request Forgeries） 
 	
 	概念：冒充用户发起请求（在用户不知情的情况下）， 完成一些违背用户意愿的事情（如修改用户信息，删初评论等）
 	
