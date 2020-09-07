@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>防抖</title>
+    <title>节流</title>
 </head>
 <style>
     #container{
@@ -30,7 +30,7 @@
             ele.innerText = count++
             console.log(this)
         }
-        /* function throllte1(func,wait) {
+        function throllte1(func,wait) {
             let context,arg;
             let previous = 0
 
@@ -44,27 +44,27 @@
                 }
             }
         } 
-        ele.onmousemove = throllte1(move,1000)*/
+        ele.onmousemove = throllte1(move,1000)
 
         // 方法二：使用定时器
         /* 
             当触发事件的时候，我们设置一个定时器，再触发事件的时候，
             如果定时器存在，就不执行，直到定时器执行，然后执行函数，清空定时器
          */
-        function throllte2(func,wait) {
+        /* function throllte2(func,wait) {
             let timer,arg,context
             return function () {
                 arg = arguments
                 context = this
                 if(!timer){
-                    setTimeout(function () {
+                    timer = setTimeout(function () {
                         timer = null
                         func.apply(context,arg)
                     }, wait);
                 }
             }
         }
-        ele.onmousemove = throllte2(move,3000)
+        ele.onmousemove = throllte2(move,3000) */
 
 
 
