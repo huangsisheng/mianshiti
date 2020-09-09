@@ -30,7 +30,7 @@
             ele.innerText = count++
             console.log(this)
         }
-        function throllte1(func,wait) {
+        function throllte1(func,wait = 3000) {
             let context,arg;
             let previous = 0
 
@@ -51,7 +51,7 @@
             当触发事件的时候，我们设置一个定时器，再触发事件的时候，
             如果定时器存在，就不执行，直到定时器执行，然后执行函数，清空定时器
          */
-        /* function throllte2(func,wait) {
+        /* function throllte2(func,wait = 1000) {
             let timer,arg,context
             return function () {
                 arg = arguments
